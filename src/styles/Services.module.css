@@ -1,0 +1,314 @@
+/* ============================================================
+   Services Section — matches About page Capability Stack style
+   ============================================================ */
+.section {
+  padding: var(--space-xl) 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Section Header ──────────────────────────────────────── */
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  margin-bottom: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+}
+
+.sectionHeading {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: 0;
+}
+
+/* ── Layout Container ────────────────────────────────────── */
+.servicesContainer {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  margin-top: 50px;
+  align-items: start;
+}
+
+/* ── Left Side — Navigation List ────────────────────────── */
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.serviceItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+}
+
+.serviceItem:hover {
+  border-color: var(--accent-secondary);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.serviceItem.active {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.serviceItemContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.serviceIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-secondary);
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.serviceItem.active .serviceIconWrapper {
+  background: rgba(0, 0, 0, 0.12);
+  color: var(--bg-primary);
+}
+
+.serviceTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.serviceItem.active .serviceTitle {
+  color: var(--bg-primary);
+}
+
+.activeArrow {
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+  color: var(--bg-primary);
+  flex-shrink: 0;
+}
+
+.serviceItem.active .activeArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── Right Side — Detail Panel ───────────────────────────── */
+.detailsPanel {
+  min-height: 450px;
+}
+
+.detailsContent {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+  height: 100%;
+  align-items: center;
+}
+
+/* ── Text block ──────────────────────────────────────────── */
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.detailsHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.detailsIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--accent-glow);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-secondary);
+}
+
+.detailsTitle {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  margin: 0;
+}
+
+.detailsDesc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ── Feature list — 2-column grid ───────────────────────── */
+.featureList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checkIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.featureItem span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+/* ── Image container ─────────────────────────────────────── */
+.imageContainer {
+  height: 100%;
+  min-height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.detailsImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.detailsContent:hover .detailsImage {
+  transform: scale(1.04);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .servicesContainer {
+    grid-template-columns: 300px 1fr;
+    gap: 30px;
+  }
+
+  .detailsContent {
+    padding: 36px;
+    gap: 30px;
+  }
+
+  .detailsTitle {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .detailsContent {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+
+  .imageContainer {
+    min-height: 220px;
+    height: 220px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 5rem 0 4rem;
+  }
+
+  .servicesContainer {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+
+  /* Horizontal scroll on mobile */
+  .servicesList {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    gap: 0.75rem;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .servicesList::-webkit-scrollbar {
+    display: none;
+  }
+
+  .serviceItem {
+    min-width: 200px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 16px 20px;
+  }
+
+  .detailsContent {
+    padding: 28px;
+    border-radius: 24px;
+  }
+
+  .detailsTitle {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featureList {
+    grid-template-columns: 1fr;
+  }
+
+  .imageContainer {
+    min-height: 180px;
+    height: 180px;
+  }
+
+  .detailsContent {
+    padding: 20px;
+    gap: 24px;
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "badge": "Premium Digital Marketing Agency",
+    "titlePart1": "Build Your Digital",
+    "titleGradient": "Presence",
+    "titlePart2": "To Scale.",
+    "subtitle": "We help brands grow through data-driven marketing strategies, high-performance websites, and compelling creative design that converts visitors into customers.",
+    "ctaText": "Get Started",
+    "ctaLink": "/contact-us",
+    "secondaryCtaText": "How it Works",
+    "mainImage": "/hero-elephant.png",
+    "secondaryImage": ""
+  },
+  "seo": {
+    "title": "Premium Digital Marketing Agency",
+    "description": "Elevate your brand with data-driven strategies and stunning design.",
+    "schema": {
+      "organizationName": "Mera Digitals",
+      "contactPhone": "07799022154",
+      "address": "10-55/1 Main Road Maseed Street",
+      "logoUrl": "https://engeniusweb.com/wp-content/uploads/2023/08/1121-scaled.jpg"
+    },
+    "ogImage": "https://engeniusweb.com/wp-content/uploads/2023/08/1121-scaled.jpg",
+    "twitterHandle": "Mera digitals"
+  },
+  "expertise": {
+    "title": "Mera Digital Expertises",
+    "subtitle": "Strategic solutions designed to amplify your brand's voice.",
+    "items": [
+      {
+        "id": "seo",
+        "title": "SEO & Optimization",
+        "description": "Dominate search rankings with data-backed strategies that drive organic traffic and qualified leads to your business.",
+        "icon": "Search",
+        "image": "/assets/generated/tech-setup.png",
+        "link": "/services/seo"
+      },
+      {
+        "id": "social",
+        "title": "Social Media",
+        "description": "Build a loyal community and boost brand awareness with creative, high-engagement campaigns across platforms.",
+        "icon": "Share2",
+        "image": "/assets/generated/team-collaboration.png",
+        "link": "/services/social-media"
+      },
+      {
+        "id": "ppc",
+        "title": "PPC & Performance",
+        "description": "Maximize your ROI with precision-targeted advertisements on Google, Meta, and LinkedIn. Pay only for results.",
+        "icon": "MousePointerClick",
+        "image": "/assets/generated/male-professional.png",
+        "link": "/services/ppc"
+      },
+      {
+        "id": "content",
+        "title": "Google business management",
+        "description": "Engage your audience with compelling storytelling and value-driven content that establishes your authority.",
+        "icon": "FileText",
+        "image": "/assets/generated/female-developer.png",
+        "link": "/services/content"
+      },
+      {
+        "id": "web",
+        "title": "Web Experiences",
+        "description": "Create stunning, high-performance websites that not only look good but convert visitors into loyal customers.",
+        "icon": "Monitor",
+        "image": "/assets/generated/team-collaboration.png",
+        "link": "/services/web"
+      },
+      {
+        "id": "mobile",
+        "title": "Mobile Advertising",
+        "description": "Reach your audience on their most personal devices with optimized mobile ad campaigns and app marketing.",
+        "icon": "Smartphone",
+        "image": "/assets/generated/office-building.png",
+        "link": "/services/mobile"
+      }
+    ]
+  }
+}

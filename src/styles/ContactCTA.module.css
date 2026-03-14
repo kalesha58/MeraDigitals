@@ -1,0 +1,197 @@
+.section {
+    padding: var(--space-xl) 0;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.5rem 1.25rem 0.5rem 0.5rem;
+    background: #f1f5f9;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-coffee);
+    margin-bottom: 1.5rem;
+}
+
+.badgeIcon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.badgeCircle {
+    width: 20px;
+    height: 20px;
+    background-color: var(--brand-orange);
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+}
+
+.badgeLine {
+    width: 6px;
+    height: 20px;
+    background-color: var(--brand-coffee);
+    border-radius: 4px;
+    position: absolute;
+    right: 6px;
+    z-index: 2;
+}
+
+.title {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    color: var(--brand-coffee);
+}
+
+.contentGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: flex-start;
+}
+
+.formSide {
+    max-width: 100%;
+}
+
+.inputGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+    .inputGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.inputGroup label {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--brand-coffee);
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+    padding: 1rem 1.25rem;
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: var(--brand-coffee);
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+    color: #94a3b8;
+}
+
+.inputGroup input:focus,
+.inputGroup select:focus,
+.inputGroup textarea:focus {
+    outline: none;
+    border-color: var(--brand-orange);
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(163, 230, 53, 0.1);
+}
+
+.submitBtn {
+    padding: 1rem 2.5rem;
+    background: var(--brand-coffee);
+    color: #fff;
+    border-radius: 100px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.submitBtn:hover {
+    background: var(--brand-orange);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px var(--brand-orange-glow);
+}
+
+.imageSide {
+    position: relative;
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.imageWrapper {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.mainImage {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.sparkle1,
+.sparkle2 {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: var(--brand-orange);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    z-index: 5;
+}
+
+.sparkle1 {
+    bottom: 10%;
+    right: -20px;
+}
+
+.sparkle2 {
+    bottom: 30%;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+}
+
+@media (max-width: 1024px) {
+    .contentGrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .imageSide {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}

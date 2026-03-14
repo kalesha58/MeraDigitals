@@ -1,0 +1,1147 @@
+/* About Page Redesign Styles */
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  position: relative;
+  z-index: 2;
+}
+
+/* Sections */
+.section {
+  padding: var(--space-xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hero Section */
+.hero {
+  min-height: 100vh;
+  padding: 80px 0 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.heroLeft {
+  position: relative;
+  z-index: 5;
+}
+
+.heroRight {
+  position: relative;
+  z-index: 4;
+}
+
+/* Dual-dot Badge (Same as Hero.tsx) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  backdrop-filter: var(--glass-backdrop);
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--accent-secondary);
+}
+
+.badgeIcon {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.badgeCircle {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+  box-shadow: 0 0 10px var(--accent-secondary);
+}
+
+.badgeLine {
+  width: 20px;
+  height: 1.5px;
+  background: var(--accent-secondary);
+  opacity: 0.5;
+}
+
+/* Typography */
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  line-height: 1.1;
+  font-weight: 800;
+  margin-bottom: 0;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+/* Cycling title container — prevents layout shift during transitions */
+.titleCycler {
+  position: relative;
+  min-height: clamp(10rem, 18vw, 16rem);
+  margin-bottom: 24px;
+}
+
+.titleCycler .heroTitle {
+  margin-bottom: 0;
+}
+
+/* Word-reveal animation wrappers */
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  line-height: 1.2;
+  margin-right: 0.28em;
+  padding-bottom: 0.06em;
+}
+
+.wordInner {
+  display: inline-block;
+}
+
+.heroSubtitle {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 60px;
+}
+
+/* Image Collage Grid (3 stacked/offset) */
+.collageGrid {
+  position: relative;
+  width: 100%;
+  height: 500px;
+}
+
+.collageItem {
+  position: absolute;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  background: var(--bg-tertiary);
+}
+
+.collageItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemLarge {
+  width: 320px;
+  height: 400px;
+  bottom: 0;
+  left: 10%;
+  z-index: 3;
+}
+
+.itemMedium {
+  width: 280px;
+  height: 350px;
+  top: 0;
+  right: 5%;
+  z-index: 2;
+}
+
+.itemSmall {
+  width: 220px;
+  height: 280px;
+  top: 15%;
+  left: 0;
+  z-index: 1;
+}
+
+/* HIRE US Stamp (Rotating SVG) */
+.stampWrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 0%;
+  width: 140px;
+  height: 140px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stampSvg {
+  width: 100%;
+  height: 100%;
+}
+
+.stampText {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  fill: var(--accent-secondary);
+}
+
+.stampInner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: var(--accent-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.stampArrow {
+  transform: rotate(-45deg);
+}
+
+/* Stats Strip (Inline below Hero) */
+.heroStats {
+  margin-top: 40px;
+  padding: 30px 40px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  backdrop-filter: var(--glass-backdrop);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 900px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.statValue {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--accent-secondary);
+  font-family: var(--font-outfit);
+}
+
+.statLabel {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Background Blobs */
+.blob1,
+.blob2 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.blob1 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent-glow);
+  top: 10%;
+  left: -10%;
+}
+
+.blob2 {
+  width: 500px;
+  height: 500px;
+  background: rgba(51, 45, 43, 0.3);
+  bottom: 5%;
+  right: -5%;
+}
+
+/* Service Ecosystem Tabs (Pattern from Services.tsx) */
+.ecosystem {
+  background: var(--bg-secondary);
+}
+
+.tabSystem {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.tabList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tabItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tabItem.active {
+  background: var(--accent-secondary);
+  border-color: var(--accent-secondary);
+}
+
+.tabItem.active .tabTitle {
+  color: var(--bg-primary);
+}
+
+.tabItem.active .tabIconWrapper {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--bg-primary);
+}
+
+.tabItemContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tabIconWrapper {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--accent-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-secondary);
+  transition: all 0.3s ease;
+}
+
+.tabTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.activeArrow {
+  color: var(--bg-primary);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.active .activeArrow {
+  opacity: 1;
+}
+
+.tabPanel {
+  min-height: 450px;
+}
+
+.panelContent {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 40px;
+  height: 100%;
+  align-items: center;
+}
+
+.panelLeft h3 {
+  font-size: 2.25rem;
+  margin-bottom: 20px;
+}
+
+.panelDesc {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 30px;
+  line-height: 1.8;
+}
+
+.panelFeatures {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.panelFeatureItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.checkWrapper {
+  width: 20px;
+  height: 20px;
+  background: var(--accent-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+}
+
+.panelImageWrapper {
+  height: 100%;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+
+.panelImageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Process Timeline */
+.timelineGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 60px;
+  position: relative;
+}
+
+.timelineGrid::after {
+  content: '';
+  position: absolute;
+  top: 50px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  border-top: 2px dashed var(--glass-border);
+  z-index: 0;
+}
+
+.processStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stepIconWrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  color: var(--accent-secondary);
+  transition: all 0.3s ease;
+}
+
+.processStep:hover .stepIconWrapper {
+  border-color: var(--accent-secondary);
+  box-shadow: 0 0 30px var(--accent-glow);
+  transform: scale(1.05);
+}
+
+.stepNumber {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 32px;
+  height: 32px;
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Team Grid */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.teamCard {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--bg-tertiary);
+  height: 420px;
+  cursor: pointer;
+}
+
+.teamImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.teamOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30px;
+  background: linear-gradient(to top, rgba(10, 10, 15, 0.95) 0%, rgba(10, 10, 15, 0) 100%);
+  transform: translateY(60px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.teamCard:hover .teamOverlay {
+  transform: translateY(0);
+}
+
+.memberName {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.memberRole {
+  font-size: 0.95rem;
+  color: var(--accent-secondary);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.memberSocials {
+  display: flex;
+  gap: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
+}
+
+.teamCard:hover .memberSocials {
+  opacity: 1;
+}
+
+.socialIcon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.socialIcon:hover {
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  border-color: var(--accent-secondary);
+}
+
+/* Values Grid */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 50px;
+}
+
+.valueCard {
+  padding: 2rem 1.5rem;
+  border-radius: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.valueCard:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-secondary);
+}
+
+.valueIconCircle {
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: var(--accent-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+  box-shadow: 0 8px 16px var(--accent-glow);
+}
+
+/* Story / Mission */
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.checkPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.checkPill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 99px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.storyImageCard {
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.captionBadge {
+  position: absolute;
+  bottom: 0;
+  left: 20px;
+  padding: 12px 24px;
+  background: var(--accent-secondary);
+  color: var(--bg-primary);
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  box-shadow: 0 10px 20px var(--accent-glow);
+  z-index: 10;
+}
+
+/* Squiggle Card Decorative Card (Pattern from WhyChooseUs.tsx) */
+.squiggleCard {
+  position: absolute;
+  bottom: -30px;
+  right: -30px;
+  width: 150px;
+  height: 80px;
+  background: var(--accent-secondary);
+  border-radius: 16px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.squiggleSvg {
+  width: 100%;
+}
+
+/* Mesh Gradient (Pattern from Hero.tsx context) */
+.meshBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  background-image:
+    radial-gradient(at 0% 0%, hsla(253, 16%, 7%, 1) 0, transparent 50%),
+    radial-gradient(at 50% 0%, hsla(225, 39%, 30%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(339, 49%, 30%, 1) 0, transparent 50%);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* Badge (Shared utility from Hero/WhoseChooseUs) */
+.sectionBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  margin-bottom: 24px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+}
+
+/* MD Featured Profile Layout */
+.mdFeaturedCard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 3rem;
+  border-radius: 32px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-backdrop);
+}
+
+.mdFeaturedImage {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 520px;
+  flex-shrink: 0;
+}
+
+.mdFeaturedImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.mdFeaturedContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.mdFeaturedRole {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-secondary);
+  background: var(--accent-glow);
+  padding: 6px 16px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.mdFeaturedName {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.mdFeaturedDesc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.mdFeaturedSocials {
+  display: flex;
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 900px) {
+  .mdFeaturedCard {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2rem;
+  }
+
+  .mdFeaturedImage {
+    height: 380px;
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .mdFeaturedContent {
+    text-align: center;
+    align-items: center;
+  }
+
+  .mdFeaturedSocials {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .mdFeaturedCard {
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+
+  .mdFeaturedImage {
+    height: 280px;
+  }
+
+  .mdFeaturedName {
+    font-size: 1.75rem;
+  }
+
+  .mdFeaturedDesc {
+    font-size: 0.95rem;
+  }
+}
+
+/* Contact Info Section */
+.contactInfoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.contactInfoCard {
+  padding: 2.5rem 2rem;
+  border-radius: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-backdrop);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.contactInfoCard:hover {
+  border-color: var(--accent-secondary);
+  transform: translateY(-4px);
+}
+
+.contactIconCircle {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-primary);
+  flex-shrink: 0;
+  box-shadow: 0 8px 16px var(--accent-glow);
+}
+
+.contactInfoLabel {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.contactInfoValue {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+.contactInfoLink {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent-secondary);
+  transition: opacity 0.2s;
+}
+
+.contactInfoLink:hover {
+  opacity: 0.8;
+}
+
+/* MD Profile Card */
+.mdProfileCard {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2.5rem;
+  border-radius: 24px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-backdrop);
+  margin-top: 30px;
+}
+
+.mdProfileImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  border: 3px solid var(--accent-secondary);
+  box-shadow: 0 8px 24px var(--accent-glow);
+  flex-shrink: 0;
+}
+
+.mdProfileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mdProfileRole {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-secondary);
+}
+
+.mdProfileName {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.mdProfileDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+  .contactInfoGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .mdProfileCard {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+
+  .heroContent,
+  .storyGrid,
+  .tabSystem,
+  .panelContent {
+    grid-template-columns: 1fr;
+  }
+
+  .collageGrid {
+    height: 420px;
+  }
+
+  .heroStats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .itemLarge {
+    width: 42%;
+    left: 28%;
+  }
+
+  .itemMedium {
+    width: 36%;
+    right: 5%;
+  }
+
+  .itemSmall {
+    width: 30%;
+    left: 3%;
+  }
+}
+
+/* Tablet / mobile — show only the main (itemLarge) image, hide side images */
+@media (max-width: 768px) {
+  .collageGrid {
+    height: 320px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .itemSmall {
+    display: none;
+  }
+
+  .itemMedium {
+    display: none;
+  }
+
+  .itemLarge {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 28px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  }
+
+  .stampWrapper {
+    width: 90px;
+    height: 90px;
+    bottom: -12px;
+    right: -8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .collageGrid {
+    height: 260px;
+    max-width: 320px;
+  }
+
+  .itemLarge {
+    border-radius: 22px;
+  }
+
+  .stampWrapper {
+    width: 76px;
+    height: 76px;
+    bottom: -10px;
+    right: -6px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 120px;
+  }
+
+  .heroLeft {
+    text-align: center;
+  }
+
+  .heroTitle {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .heroSubtitle {
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .heroActions {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .badge {
+    margin-bottom: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .heroStats {
+    grid-template-columns: 1fr 1fr;
+    margin: 40px auto;
+  }
+
+  .storyGrid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  .checkmarkGrid {
+    text-align: left;
+  }
+
+  .processSteps {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .processLine {
+    display: none;
+  }
+
+  .teamHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .timelineGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineGrid::after {
+    display: none;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .valueCard {
+    padding: 1.25rem 1rem;
+    gap: 12px;
+  }
+}

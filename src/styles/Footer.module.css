@@ -1,0 +1,596 @@
+/* ─── Footer Shell ─────────────────────────────────────────────── */
+.footer {
+  position: relative;
+  background: #020617;
+  color: #fff;
+  overflow: hidden;
+  font-family: var(--font-inter), sans-serif;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+:global([data-theme="light"]) .footer {
+  background: #f1f5f9;
+  color: #1f2937;
+}
+
+/* glowing gradient top border */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--brand-coffee) 0%, var(--brand-orange) 50%, var(--brand-coffee) 100%);
+  z-index: 2;
+}
+
+/* ambient radial glow – bottom left */
+.footer::after {
+  content: '';
+  position: absolute;
+  bottom: -120px;
+  left: -120px;
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(51, 45, 43, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ambient radial glow – top right */
+.glowRight {
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(244, 129, 32, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Logo Text ─────────────────────────────────────────────────── */
+.logoText {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--brand-orange);
+  line-height: 1;
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.logoImage {
+  height: 48px;
+  width: auto;
+  display: block;
+  transition: transform 0.2s ease;
+}
+
+.logoImage:hover {
+  transform: scale(1.05);
+}
+
+:global([data-theme="light"]) .logoText {
+  color: var(--brand-coffee);
+}
+
+/* ─── Container ─────────────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ─── CTA Strip ─────────────────────────────────────────────────── */
+.ctaStrip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.25rem 2rem;
+  margin: var(--space-md) 0;
+  background: linear-gradient(135deg, rgba(51, 45, 43, 0.18) 0%, rgba(244, 129, 32, 0.06) 100%);
+  border: 1px solid rgba(244, 129, 32, 0.18);
+  border-radius: 1.25rem;
+  backdrop-filter: blur(8px);
+}
+
+:global([data-theme="light"]) .ctaStrip {
+  background: linear-gradient(135deg, rgba(51, 45, 43, 0.06) 0%, rgba(244, 129, 32, 0.04) 100%);
+  border: 1px solid rgba(51, 45, 43, 0.2);
+}
+
+.ctaText h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.35rem;
+}
+
+:global([data-theme="light"]) .ctaText h3 {
+  color: #1f2937;
+}
+
+.ctaText p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+:global([data-theme="light"]) .ctaText p {
+  color: #4b5563;
+}
+
+.ctaForm {
+  display: flex;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.ctaInput {
+  padding: 0.65rem 1.1rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.9rem;
+  width: 240px;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s, color 0.25s;
+}
+
+:global([data-theme="light"]) .ctaInput {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  color: #1f2937;
+}
+
+.ctaInput::placeholder {
+  color: #64748b;
+}
+
+:global([data-theme="light"]) .ctaInput::placeholder {
+  color: #9ca3af;
+}
+
+.ctaInput:focus {
+  border-color: rgba(244, 129, 32, 0.55);
+}
+
+.ctaButton {
+  padding: 0.65rem 1.5rem;
+  border-radius: 0.625rem;
+  border: none;
+  background: var(--brand-coffee);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.ctaButton:hover {
+  background: var(--brand-orange);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--brand-orange-glow);
+}
+
+/* ─── Top Section ───────────────────────────────────────────────── */
+.topSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: var(--space-md);
+  gap: 4rem;
+}
+
+:global([data-theme="light"]) .topSection {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Brand Column ──────────────────────────────────────────────── */
+.brandColumn {
+  flex: 1;
+  max-width: 46%;
+}
+
+.logo {
+  display: block;
+  margin-bottom: 1.25rem;
+  text-decoration: none;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.brandDescription {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #94a3b8;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+:global([data-theme="light"]) .brandDescription {
+  color: #4b5563;
+}
+
+/* ─── Socials ───────────────────────────────────────────────────── */
+.socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 0.625rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, color 0.25s, border-color 0.25s, transform 0.25s;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+:global([data-theme="light"]) .socialIcon {
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #6b7280;
+}
+
+.socialIcon:hover {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--brand-orange-glow);
+}
+
+:global([data-theme="light"]) .socialIcon:hover {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  color: #fff;
+}
+
+/* ─── Mascot / Award Column ─────────────────────────────────────── */
+.mascotColumn {
+  flex: 0 0 auto;
+  width: 280px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascotCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.25rem;
+  gap: 1.25rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.mascotTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--brand-orange);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: -0.25rem;
+}
+
+:global([data-theme="light"]) .mascotTitle {
+  color: var(--brand-coffee);
+}
+
+:global([data-theme="light"]) .mascotCard {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+.mascotCard:hover {
+  border-color: rgba(244, 129, 32, 0.3);
+}
+
+:global([data-theme="light"]) .mascotCard:hover {
+  border-color: rgba(51, 45, 43, 0.25);
+}
+
+.mascotImageWrap {
+  position: relative;
+  width: 88px;
+  height: 88px;
+}
+
+.mascotImageWrap::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand-coffee), var(--brand-orange));
+  z-index: 0;
+}
+
+.mascotImageWrap img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #020617;
+}
+
+:global([data-theme="light"]) .mascotImageWrap img {
+  border: 2px solid #ffffff;
+}
+
+.mascotText {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  line-height: 1.55;
+  margin: 0;
+}
+
+:global([data-theme="light"]) .mascotText {
+  color: #1f2937;
+}
+
+.mascotBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.9rem;
+  background: rgba(244, 129, 32, 0.1);
+  border: 1px solid rgba(244, 129, 32, 0.25);
+  border-radius: 2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--brand-orange);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+:global([data-theme="light"]) .mascotBadge {
+  background: rgba(51, 45, 43, 0.08);
+  border: 1px solid rgba(51, 45, 43, 0.2);
+  color: var(--brand-coffee);
+}
+
+/* ─── Bottom Section ────────────────────────────────────────────── */
+.bottomSection {
+  display: flex;
+  gap: 4rem;
+  padding-bottom: 1rem;
+}
+
+/* ─── Quick Links ───────────────────────────────────────────────── */
+.quickLinks {
+  flex: 0 0 180px;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-orange);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(244, 129, 32, 0.2);
+}
+
+:global([data-theme="light"]) .sectionTitle {
+  color: var(--brand-coffee);
+  border-bottom: 1px solid rgba(51, 45, 43, 0.2);
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.linkItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s, gap 0.2s;
+  cursor: pointer;
+}
+
+:global([data-theme="light"]) .linkItem {
+  color: #4b5563;
+}
+
+.linkItem::before {
+  content: '→';
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.linkItem:hover {
+  color: var(--brand-orange);
+  gap: 0.6rem;
+}
+
+:global([data-theme="light"]) .linkItem:hover {
+  color: var(--brand-coffee);
+}
+
+.linkItem:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ─── Industries ─────────────────────────────────────────────────── */
+.industries {
+  flex: 1;
+}
+
+.industriesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.industryTag {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  color: #94a3b8;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+:global([data-theme="light"]) .industryTag {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  color: #4b5563;
+}
+
+.industryTag:hover {
+  background: rgba(244, 129, 32, 0.08);
+  border-color: rgba(244, 129, 32, 0.3);
+  color: var(--brand-orange);
+}
+
+:global([data-theme="light"]) .industryTag:hover {
+  background: rgba(51, 45, 43, 0.06);
+  border-color: rgba(51, 45, 43, 0.25);
+  color: var(--brand-coffee);
+}
+
+/* ─── Copyright ──────────────────────────────────────────────────── */
+.copyright {
+  margin-top: var(--space-md);
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #475569;
+  gap: 1rem;
+}
+
+:global([data-theme="light"]) .copyright {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  color: #6b7280;
+}
+
+.copyrightLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.copyrightLinks a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+:global([data-theme="light"]) .copyrightLinks a {
+  color: #6b7280;
+}
+
+.copyrightLinks a:hover {
+  color: var(--brand-orange);
+}
+
+:global([data-theme="light"]) .copyrightLinks a:hover {
+  color: var(--brand-coffee);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .topSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+  }
+
+  .brandColumn {
+    max-width: 100%;
+  }
+
+  .mascotColumn {
+    width: 100%;
+  }
+
+  .mascotCard {
+    flex-direction: row;
+    text-align: left;
+    width: 100%;
+    padding: 1.5rem 2rem;
+  }
+
+  .bottomSection {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .ctaStrip {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
+    gap: 1.25rem;
+  }
+
+  .ctaForm {
+    width: 100%;
+  }
+
+  .ctaInput {
+    width: 100%;
+    flex: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .mascotCard {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .copyright {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .copyrightLinks {
+    justify-content: center;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+}

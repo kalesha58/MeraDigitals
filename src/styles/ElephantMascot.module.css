@@ -1,0 +1,102 @@
+.mascotContainer {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+    width: 180px;
+    cursor: default;
+    pointer-events: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.whatsappWrapper {
+    margin-bottom: -15px;
+    margin-right: 15px;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsappWrapper:hover {
+    transform: scale(1.1) rotate(-5deg);
+}
+
+.whatsappIcon {
+    background: #25D366;
+    color: white;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    border: 3px solid white;
+}
+
+.mascotWrapper {
+    position: relative;
+    width: 100%;
+}
+
+.mascotImage {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.mascotContainer:hover .mascotImage {
+    filter: drop-shadow(0 15px 30px rgba(111, 44, 236, 0.5));
+}
+
+.speechBubble {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.speechBubble::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    right: 30px;
+    width: 15px;
+    height: 15px;
+    background: white;
+    transform: rotate(45deg);
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.mascotContainer:hover .speechBubble {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .mascotContainer {
+        width: 100px;
+        right: 15px;
+        bottom: 80px;
+        /* Leave space for bottom nav if any */
+    }
+
+    .speechBubble {
+        display: none;
+    }
+}
