@@ -1,4 +1,4 @@
-# Premium Digital Agency Website
+# MeraDigital Marketing Agency
 
 Based on Next.js 16 (App Router), React 19, and Framer Motion.
 Designed with a "Stark Luxury" glassmorphism aesthetic.

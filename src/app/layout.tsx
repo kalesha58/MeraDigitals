@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
-  title: "Premium Digital Marketing Agency",
+  title: "MeraDigital Marketing Agency",
   description: "Elevate your brand with data-driven strategies and stunning design.",
   icons: {
     icon: '/favicon.ico',

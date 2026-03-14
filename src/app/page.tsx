@@ -37,7 +37,7 @@ export async function generateMetadata() {
   const seo = data.seo || {};
 
   return {
-    title: seo.title || 'Premium Digital Marketing Agency',
+    title: seo.title || 'MeraDigital Marketing Agency',
     description: seo.description || 'Elevate your brand with data-driven strategies and stunning design.',
     keywords: seo.keywords || 'digital marketing, seo, web design',
     alternates: {

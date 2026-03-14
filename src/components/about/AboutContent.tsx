@@ -147,7 +147,7 @@ export default function AboutContent() {
               </div>
 
               <motion.p variants={itemVariants} className={styles.heroSubtitle}>
-                We are a premium digital marketing agency dedicated to transforming businesses through innovation, strategy, and data-driven design.
+                We are MeraDigital Marketing Agency, dedicated to transforming businesses through innovation, strategy, and data-driven design.
               </motion.p>
 
               <motion.div variants={itemVariants} className={styles.heroActions}>
