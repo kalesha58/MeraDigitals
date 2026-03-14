@@ -14,6 +14,20 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
   },
+  openGraph: {
+    images: [
+      {
+        url: '/MER_DIGITALS_LOGO.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mera Digitals Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/MER_DIGITALS_LOGO.png'],
+  },
 };
 
 export default function RootLayout({
