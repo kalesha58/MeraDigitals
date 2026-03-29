@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   /* Premium Dark Mode Palette (Default) */
   --bg-primary: #0a0a0f;
@@ -8,9 +10,10 @@
   --brand-orange-secondary: #ea580c;
   --brand-orange-glow: rgba(244, 129, 32, 0.4);
 
-  --brand-coffee: #332d2b;
-  --brand-coffee-light: #4d4543;
-  --brand-coffee-glow: rgba(51, 45, 43, 0.4);
+  /* Warm Cream/Latte contrast for Dark Mode instead of dark brown */
+  --brand-coffee: #e5e0d8;
+  --brand-coffee-light: #f5f0e6;
+  --brand-coffee-glow: rgba(229, 224, 216, 0.4);
 
   --accent-primary: var(--brand-orange);
   --accent-secondary: var(--brand-coffee);
@@ -53,6 +56,11 @@
 
   --brand-orange: #f48120;
   --brand-orange-glow: rgba(244, 129, 32, 0.2);
+
+  /* Original dark brown Coffee for Light Mode */
+  --brand-coffee: #332d2b;
+  --brand-coffee-light: #4d4543;
+  --brand-coffee-glow: rgba(51, 45, 43, 0.4);
 
   --accent-primary: var(--brand-coffee);
   --accent-secondary: var(--brand-orange);

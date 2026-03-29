@@ -4,313 +4,676 @@
 
 /* Page wrapper — light, clean */
 .servicePage {
-  background-color: #ffffff;
+  background: radial-gradient(circle at top right, rgba(234, 88, 12, 0.04), transparent 500px),
+    radial-gradient(circle at bottom left, rgba(62, 39, 35, 0.03), transparent 500px),
+    var(--bg-primary);
   padding-top: 80px;
   /* header offset */
 }
 
-/* ── Hero Image ──────────────────────────────────────────── */
-.heroImageWrapper {
+/* ── Animated Sky Hero ─────────────────────────────────── */
+.heroStickyContainer {
   position: relative;
+  height: 90vh;
+  min-height: 600px;
   width: 100%;
-  max-width: 900px;
-  margin: 48px auto 0;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.heroImg {
-  width: 100%;
-  height: auto;
-  max-height: 480px;
-  object-fit: cover;
-  display: block;
-}
-
-.playBtn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 56px;
-  height: 56px;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
+  background: linear-gradient(180deg, #2b3641 0%, #3e4a57 100%);
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--brand-coffee);
-  cursor: pointer;
-  transition: all 0.25s ease;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  justify-content: flex-start;
+  padding: 0 5%;
+  z-index: 1;
+  overflow: hidden;
+  margin-top: -80px;
+  /* pull up into header space */
 }
 
-.playBtn:hover {
-  background: #ffffff;
-  transform: translate(-50%, -50%) scale(1.1);
+/* Force dark sky even in light mode to maintain the aesthetic */
+[data-theme='light'] .heroStickyContainer {
+  background: linear-gradient(180deg, #2b3641 0%, #3e4a57 100%);
 }
 
-/* ── Content Sections ────────────────────────────────────── */
-.contentSection {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 3rem 2rem 0;
+/* Base Cloud Layer Animation */
+@keyframes driftLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-.benefitsSection {
-  padding-bottom: 6rem;
+@keyframes driftRight {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
 }
 
-/* ── About Section ───────────────────────────────────────── */
-.aboutTitle {
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 1.5rem;
-  line-height: 1.3;
-}
-
-.descRow {
+.cloudLayerBack {
+  position: absolute;
+  top: 15%;
+  left: 0;
+  width: 200%;
+  height: 40%;
   display: flex;
-  align-items: flex-start;
-  gap: 0.875rem;
-  margin-bottom: 1.25rem;
+  opacity: 0.4;
+  animation: driftLeft 120s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.cloudLayerFront {
+  position: absolute;
+  bottom: 0%;
+  left: 0;
+  width: 200%;
+  height: 50%;
+  display: flex;
+  opacity: 0.8;
+  animation: driftRight 90s linear infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.cloudSvgWrapper {
+  width: 50%;
+  height: 100%;
+  fill: #5a6b7c;
+  /* Muted slate blue for distant clouds */
+}
+
+.cloudLayerFront .cloudSvgWrapper {
+  fill: #e2e8f0;
+  /* brighter for foreground clouds */
+}
+
+.heroContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+.heroTextContainer {
+  max-width: 650px;
+  padding-bottom: 5vh;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+.textHighlight {
+  color: #fca5a5;
+  /* soft brand red/orange to pop on slate */
+}
+
+.heroSubtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  color: #e2e8f0;
+  line-height: 1.6;
+}
+
+.heroSubtitle strong {
+  color: #fff;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+.heroBuildingRight {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+  height: 75%;
+  max-width: 45%;
+  z-index: 6;
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.3));
+  pointer-events: none;
+}
+
+.heroBuildingRight img {
+  height: 100%;
+  width: auto;
+  object-fit: contain;
+  object-position: bottom right;
+}
+
+/* The Fluffy White Clouds at the bottom edge mapping to the white content below */
+.bottomFluffContainer {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 10vh;
+  z-index: 7;
+  pointer-events: none;
+}
+
+.bottomFluffSvg {
+  width: 100%;
+  height: 100%;
+  fill: var(--bg-primary);
+  transform: scaleY(1.2);
+  transform-origin: bottom;
+}
+
+/* ── Main Content Area ───────────────────────────────────── */
+.mainContentArea {
+  position: relative;
+  z-index: 10;
+  background-color: var(--bg-primary);
+  /* Subtle CSS "Cloud Shades" blobs */
+  background-image:
+    radial-gradient(circle at 15% 15%, rgba(135, 206, 235, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 85% 35%, rgba(200, 220, 255, 0.07) 0%, transparent 55%),
+    radial-gradient(circle at 30% 65%, rgba(135, 206, 235, 0.06) 0%, transparent 50%),
+    radial-gradient(circle at 75% 85%, rgba(180, 210, 240, 0.08) 0%, transparent 60%);
+  background-size: 100% 100%;
+  padding: 0 5% 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ── Generic Glass Styling ───────────────────────────────── */
+.glassAboutCard,
+.glassIncludesCard,
+.glassMetricCard,
+.glassExpertiseSection,
+.glassGallerySection,
+.glassBenefitsCard,
+.glassFaqCard {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 32px;
+  padding: 3rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+}
+
+.glassAboutCard:hover,
+.glassIncludesCard:hover,
+.glassExpertiseSection:hover,
+.glassGallerySection:hover,
+.glassBenefitsCard:hover,
+.glassFaqCard:hover {
+  border-color: rgba(244, 129, 32, 0.3);
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.08);
+}
+
+.glassHeading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.glassSub {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* ── About Overlapping Card ──────────────────────────────── */
+.glassAboutCard {
+  margin-top: -6rem;
+  /* Overlaps the bottom hero fluff */
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aboutHeaderFlex {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .authorAvatar {
-  width: 36px;
-  height: 36px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: var(--brand-coffee);
+  background: var(--brand-orange);
   color: #fff;
-  font-weight: 700;
-  font-size: 0.9rem;
+  font-weight: 800;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  margin-top: 2px;
 }
 
-.description1 {
-  font-size: 0.95rem;
-  color: #475569;
-  line-height: 1.75;
-  margin: 0;
+.glassAboutTitle {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
 }
 
-.description2 {
-  font-size: 0.95rem;
-  color: #475569;
-  line-height: 1.75;
-  margin: 0;
-}
-
-/* ── Shared Section Heading & Desc ──────────────────────── */
-.sectionHeading {
-  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 1rem;
-}
-
-.sectionDesc {
-  font-size: 0.95rem;
-  color: #475569;
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-
-/* ── Services Include Grid ───────────────────────────────── */
-.includeGrid {
+.aboutDescLayout {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.75rem 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
-.includeItem {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  color: #1e293b;
+.aboutDescLead {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  line-height: 1.7;
   font-weight: 500;
 }
 
-.checkIcon {
-  color: var(--brand-coffee);
+.aboutDescSecondary {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* ── Custom Bento Rows ───────────────────────────────────── */
+.bentoMasterRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.bentoMasterRowReflect {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+  gap: 1.5rem;
+}
+
+/* ── Includes Grid ───────────────────────────────────────── */
+.includesPillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.includePill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--bg-secondary);
+  padding: 1rem 1.25rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.includePill:hover {
+  border-color: var(--brand-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+.checkIconModern {
+  color: var(--brand-orange);
   flex-shrink: 0;
 }
 
-/* ── Gallery ─────────────────────────────────────────────── */
-.gallery {
+/* ── Metrics Stack ───────────────────────────────────────── */
+.metricsStack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.glassMetricCard {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.metricValLarge {
+  font-size: clamp(3rem, 4vw, 4rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--brand-orange), var(--brand-coffee));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+}
+
+.metricLabSmall {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* ── Floating Expertise Grid ─────────────────────────────── */
+.sectionHeaderFlex {
+  margin-bottom: 3rem;
+}
+
+.glassHeadingLarge {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.glassSubLarge {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+}
+
+.expertiseHoverGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.expertiseHoverCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.expertiseHoverCard:hover {
+  background: var(--brand-orange);
+  border-color: var(--brand-orange);
+  box-shadow: 0 20px 40px rgba(244, 129, 32, 0.25);
+}
+
+.expertiseHoverCard:hover .expTitle,
+.expertiseHoverCard:hover .expDesc,
+.expertiseHoverCard:hover .expNum {
+  color: #fff;
+}
+
+.expHeader {
+  display: flex;
+  align-items: center;
   gap: 1rem;
-  max-width: 900px;
-  margin: 3rem auto 0;
-  padding: 0 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.galleryItem {
-  border-radius: 16px;
+.expNum {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--text-muted);
+  transition: color 0.4s ease;
+}
+
+.expLine {
+  flex-grow: 1;
+  height: 2px;
+  background: var(--glass-border);
+}
+
+.expTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+  transition: color 0.4s ease;
+}
+
+.expDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  transition: color 0.4s ease;
+}
+
+/* ── Gallery Collage ─────────────────────────────────────── */
+.galleryCollage {
+  display: grid;
+  grid-template-columns: span 2;
+  gap: 1.5rem;
+  height: 400px;
+}
+
+.galleryItemModern {
+  border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  position: relative;
 }
 
-.galleryImg {
+.galleryItem1 {
+  grid-column: 1 / 2;
+}
+
+.galleryItem2 {
+  grid-column: 2 / 3;
+}
+
+.galleryImgZoom {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* ── Expertise Grid ──────────────────────────────────────── */
-.expertiseGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-}
-
-.expertiseCard {
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  padding: 1.5rem 1.25rem;
-  background: #fff;
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
-}
-
-.expertiseNum {
-  width: 40px;
-  height: 40px;
-  background: var(--brand-coffee);
-  border-radius: 50%;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.85rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1rem;
-}
-
-.expertiseCardTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.expertiseCardDesc {
-  font-size: 0.85rem;
-  color: #64748b;
-  line-height: 1.6;
-  margin: 0;
+.galleryItemModern:hover .galleryImgZoom {
+  transform: scale(1.08);
 }
 
 /* ── Benefits ────────────────────────────────────────────── */
-.benefitsList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
+.glassBenefitsCard {
+  padding-bottom: 350px;
+  /* Extra room for the elephant graphic at the bottom */
 }
 
-.benefitItem {
-  display: flex;
-  align-items: center;
-  gap: 0.875rem;
-  font-size: 0.95rem;
-  color: #1e293b;
-  line-height: 1.6;
-}
-
-/* Badge icon — same pattern as Hero/About badges */
-.benefitBadge {
+.benefitsContent {
   position: relative;
-  width: 32px;
-  height: 20px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-}
-
-.benefitCircle {
-  width: 20px;
-  height: 20px;
-  background-color: var(--brand-orange);
-  border-radius: 50%;
-  position: absolute;
-  left: 0;
-}
-
-.benefitLine {
-  width: 6px;
-  height: 14px;
-  background-color: var(--brand-coffee);
-  border-radius: 4px;
-  position: absolute;
-  right: 0;
   z-index: 2;
 }
 
-/* ── Responsive ──────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .heroImageWrapper {
-    max-width: 100%;
-    margin: 48px 0 0;
-    border-radius: 0;
+.benefitsListGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.benefitItemModern {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.modernDot {
+  width: 10px;
+  height: 10px;
+  background: var(--brand-orange);
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 0 10px rgba(244, 129, 32, 0.4);
+}
+
+.benefitsGraphicWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 340px;
+  /* covers the bottom whitespace */
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+  pointer-events: none;
+}
+
+.benefitsGraphic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  opacity: 0.6;
+  transition: opacity 0.4s ease, transform 0.8s ease;
+}
+
+.glassBenefitsCard:hover .benefitsGraphic {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+/* ── FAQ Modern ──────────────────────────────────────────── */
+.faqListModern {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.faqModernItem {
+  background: var(--bg-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.faqModernItem:hover {
+  border-color: var(--text-secondary);
+}
+
+.faqOpenModern {
+  background: var(--bg-primary);
+  border-color: var(--brand-orange);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.faqHeaderModern {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faqQuestionModern {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.faqIconWrapper {
+  color: var(--text-muted);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.faqIconRotated {
+  transform: rotate(180deg);
+  color: var(--brand-orange);
+}
+
+.faqAnswerWrapperModern {
+  padding: 0 2rem 2rem;
+}
+
+.faqAnswerModern {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* ── Responsive Architecture ─────────────────────────────── */
+@media (max-width: 1100px) {
+
+  .bentoMasterRow,
+  .bentoMasterRowReflect {
+    grid-template-columns: 1fr;
   }
 
-  .contentSection,
-  .gallery {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+  .aboutDescLayout {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .expertiseHoverGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .galleryCollage {
+    height: 300px;
   }
 }
 
 @media (max-width: 768px) {
-  .servicePage {
-    padding-top: 70px;
+
+  .glassAboutCard,
+  .glassIncludesCard,
+  .glassMetricCard,
+  .glassExpertiseSection,
+  .glassGallerySection,
+  .glassBenefitsCard,
+  .glassFaqCard {
+    padding: 2rem;
+    border-radius: 24px;
   }
 
-  .includeGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .expertiseGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gallery {
-    gap: 0.75rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .contentSection {
-    padding: 2rem 1rem 0;
-  }
-
-  .gallery {
-    padding: 0 1rem;
+  .expertiseHoverGrid {
     grid-template-columns: 1fr;
   }
 
-  .includeGrid {
-    grid-template-columns: 1fr;
-    gap: 0.5rem;
-  }
-
-  .expertiseGrid {
+  .includesPillGrid {
     grid-template-columns: 1fr;
   }
 
-  .aboutTitle {
-    font-size: 1.4rem;
+  .galleryCollage {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .galleryItem1,
+  .galleryItem2 {
+    grid-column: 1 / -1;
+    height: 250px;
+  }
+
+  .faqHeaderModern {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .faqAnswerWrapperModern {
+    padding: 0 1.5rem 1.5rem;
   }
 }

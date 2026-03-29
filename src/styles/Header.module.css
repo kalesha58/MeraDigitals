@@ -142,10 +142,16 @@
   z-index: 100;
 }
 
-.navItem:hover .megaMenu {
+.navItem:hover .megaMenu:not(.forceClose) {
   opacity: 1;
   visibility: visible;
   transform: translateX(-50%) translateY(0);
+}
+
+.forceClose {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 .megaGrid {

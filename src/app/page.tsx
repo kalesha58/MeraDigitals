@@ -54,7 +54,7 @@ export async function generateMetadata() {
       siteName: 'Mera Digitals',
       images: [
         {
-          url: seo.ogImage || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200',
+          url: seo.ogImage || '/MER_DIGITALS_LOGO.png',
           width: 1200,
           height: 630,
         },
@@ -65,7 +65,7 @@ export async function generateMetadata() {
       card: 'summary_large_image',
       title: seo.title,
       description: seo.description,
-      images: [seo.ogImage || 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1200'],
+      images: [seo.ogImage || '/MER_DIGITALS_LOGO.png'],
       creator: seo.twitterHandle || '@meradigitals',
     },
   };

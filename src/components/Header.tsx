@@ -70,20 +70,30 @@ const navLinks = [
   { href: '#', label: 'Services', hasMega: true },
   { href: '/blogs', label: 'Blogs' },
   { href: '/about-us', label: 'About Us' },
-  { href: '#', label: 'Pricing' },
   { href: '/contact-us', label: 'Get A Quote', isCta: true },
 ];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [forceCloseMega, setForceCloseMega] = useState(false);
   const pathname = usePathname();
   const { theme, toggleTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
-  // Determine if the current page should have a transparent header (e.g., Blog Details)
-  const isTransparentPage = pathname?.startsWith('/blogs/') && pathname !== '/blogs';
+  const handleMegaItemClick = () => {
+    setForceCloseMega(true);
+    setMobileOpen(false);
+    setTimeout(() => {
+      setForceCloseMega(false);
+    }, 500);
+  };
+
+  // Determine if the current page should have a transparent header (e.g., Blog Details, Services)
+  const isTransparentPage =
+    (pathname?.startsWith('/blogs/') && pathname !== '/blogs') ||
+    (pathname?.startsWith('/services/') && pathname !== '/services');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,12 +136,12 @@ export default function Header() {
                     <span className={styles.navLinkItem}>{link.label}</span>
                     <ChevronDown size={14} className={styles.chevron} />
                   </div>
-                  <div className={styles.megaMenu}>
+                  <div className={`${styles.megaMenu} ${forceCloseMega ? styles.forceClose : ''}`}>
                     <div className={styles.megaGrid}>
                       {serviceItems.map((item) => {
                         const Icon = item.icon;
                         return (
-                          <Link key={item.title} href={item.href} className={styles.megaItem}>
+                          <Link key={item.title} href={item.href} className={styles.megaItem} onClick={handleMegaItemClick}>
                             <div className={styles.megaIconWrapper}>
                               <Icon size={20} />
                             </div>

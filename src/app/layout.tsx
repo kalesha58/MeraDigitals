@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   title: "MeraDigital Marketing Agency",
   description: "Elevate your brand with data-driven strategies and stunning design.",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/MER_DIGITALS_LOGO.png',
+    apple: '/MER_DIGITALS_LOGO.png',
   },
   openGraph: {
     images: [
