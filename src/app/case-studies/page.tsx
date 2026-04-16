@@ -38,7 +38,7 @@ export default function CaseStudiesPage() {
                     animate={{ opacity: 1, y: 0 }}
                     style={{ textAlign: 'center', marginBottom: '4rem' }}
                 >
-                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>Our <span variant="gradient" style={{ color: 'var(--brand-orange)' }}>Case Studies</span></h1>
+                    <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', marginBottom: '1.5rem' }}>Our <span className="text-gradient">Case Studies</span></h1>
                     <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto', fontSize: '1.2rem' }}>
                         Discover how we've helped brands across industries achieve extraordinary growth through data-driven strategies and creative excellence.
                     </p>
