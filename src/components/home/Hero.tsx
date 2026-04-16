@@ -43,9 +43,11 @@ const wordVariants = {
 interface HeroProps {
   data?: {
     badge?: string;
-    titlePart1?: string;
-    titleGradient?: string;
-    titlePart2?: string;
+    titles?: Array<{
+      part1: string;
+      gradient: string;
+      part2: string;
+    }>;
     subtitle?: string;
     ctaText?: string;
     ctaLink?: string;
@@ -58,18 +60,28 @@ interface HeroProps {
 export default function Hero({ data }: HeroProps) {
   const [titleIndex, setTitleIndex] = useState(0);
 
+  // Fallback TITLES if data is not provided or incomplete
+  const defaultTitles = [
+    { part1: "Empowering Your Success with", gradient: "Digital Expertise", part2: "" },
+    { part1: "Elevating Your Brand with", gradient: "Creative Excellence", part2: "" },
+    { part1: "Scaling Your Business with", gradient: "Proven Strategies", part2: "" },
+  ];
+
+  const currentTitles = data?.titles || defaultTitles;
+
   useEffect(() => {
+    if (currentTitles.length <= 1) return;
     const timer = setInterval(() => {
-      setTitleIndex((prev) => (prev + 1) % TITLES.length);
+      setTitleIndex((prev) => (prev + 1) % currentTitles.length);
     }, 4500);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentTitles.length]);
 
   const content = {
-    badge: "Elevate Your Brand With Us",
-    subtitle: "We blend data-driven strategies with creative excellence to scale your brand and dominate your market.",
-    ctaText: "Explore More",
-    secondaryCtaText: "View All Services",
+    badge: data?.badge || "Elevate Your Brand With Us",
+    subtitle: data?.subtitle || "We blend data-driven strategies with creative excellence to scale your brand and dominate your market.",
+    ctaText: data?.ctaText || "Explore More",
+    secondaryCtaText: data?.secondaryCtaText || "View All Services",
   };
 
   return (
@@ -104,17 +116,26 @@ export default function Hero({ data }: HeroProps) {
                 animate="visible"
                 exit="exit"
               >
-                {TITLES[titleIndex].split(' ').map((word, i, arr) => (
-                  <span key={i} className={styles.wordWrapper}>
-                    <motion.span
-                      variants={wordVariants}
-                      className={styles.wordInner}
-                      style={i >= arr.length - 2 ? { color: 'var(--brand-orange)' } : undefined}
-                    >
-                      {word}
-                    </motion.span>
-                  </span>
-                ))}
+                {/* 
+                  We reconstruct the full string for mapping, 
+                  but we'll check against the specific 'gradient' part for coloring.
+                */}
+                {`${currentTitles[titleIndex].part1} ${currentTitles[titleIndex].gradient} ${currentTitles[titleIndex].part2}`.trim().split(' ').map((word, i, arr) => {
+                  const gradientPart = currentTitles[titleIndex].gradient;
+                  const isGradient = gradientPart.includes(word.replace(/,/g, ''));
+
+                  return (
+                    <span key={i} className={styles.wordWrapper}>
+                      <motion.span
+                        variants={wordVariants}
+                        className={styles.wordInner}
+                        style={isGradient ? { color: 'var(--brand-orange)' } : undefined}
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  );
+                })}
               </motion.h1>
             </AnimatePresence>
           </div>

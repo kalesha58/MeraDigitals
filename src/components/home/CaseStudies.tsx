@@ -7,28 +7,48 @@ import styles from '@/styles/CaseStudies.module.css';
 
 const projects = [
   {
-    title: 'Fintech Revolution',
-    category: 'APP DEVELOPMENT',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000',
+    title: 'Healthcare Scaling',
+    category: 'PERFORMANCE MARKETING',
+    image: 'https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'large',
+    metrics: {
+      leads: '1,500+ /mo',
+      costReduction: '65% Decrease',
+      beforeAfter: '150 → 1,500 Leads'
+    }
   },
   {
-    title: 'Strategy & Growth',
-    category: 'WORKFLOW STRATEGY',
-    image: 'https://images.unsplash.com/photo-1542744094-24638eff58bb?auto=format&fit=crop&q=80&w=1000',
+    title: 'Real Estate Growth',
+    category: 'LEAD GENERATION',
+    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'tall',
+    metrics: {
+      leads: '800+ /mo',
+      costReduction: '45% Decrease',
+      beforeAfter: '20 → 800 Leads'
+    }
   },
   {
-    title: 'Data Insights',
-    category: 'ANALYTICS & BI',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000',
+    title: 'E-commerce ROI',
+    category: 'META & GOOGLE ADS',
+    image: '/assets/generated/ecommerce_case_study.png',
     gridArea: 'wide',
+    metrics: {
+      leads: '3,000+ Sales',
+      costReduction: 'ROAS 5.2x',
+      beforeAfter: '1.2x → 5.2x ROAS'
+    }
   },
   {
-    title: 'Future Tech',
-    category: 'INNOVATION',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&q=80&w=1000',
+    title: 'EdTech Expansion',
+    category: 'FULL FUNNEL STRATEGY',
+    image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80&w=1000',
     gridArea: 'small',
+    metrics: {
+      leads: '5,000+ Enrolled',
+      costReduction: '30% CPL Drop',
+      beforeAfter: 'New Market Entry'
+    }
   }
 ];
 
@@ -72,10 +92,11 @@ export default function CaseStudies() {
             transition={{ duration: 0.8 }}
           >
             <div className={styles.eyebrow}>
-              <span>PORTFOLIO</span>
+              <Zap size={14} fill="var(--brand-orange)" color="var(--brand-orange)" style={{ marginRight: '8px' }} />
+              <span>RESULT-DRIVEN CASE STUDIES</span>
             </div>
-            <h2 className={styles.title}>Featured Work</h2>
-            <p className={styles.subtitle}>Transforming ideas into digital reality.</p>
+            <h2 className={styles.title}>Results That Build Trust</h2>
+            <p className={styles.subtitle}>We don&apos;t just deliver reports; we deliver measurable growth that impacts your bottom line.</p>
           </motion.div>
 
           <motion.div
@@ -85,7 +106,7 @@ export default function CaseStudies() {
             transition={{ duration: 0.8 }}
           >
             <Link href="/case-studies" className={styles.viewMoreBtn}>
-              View All Projects <ArrowUpRight size={20} />
+              Full Portfolio <ArrowUpRight size={20} />
             </Link>
           </motion.div>
         </div>
@@ -113,8 +134,25 @@ export default function CaseStudies() {
               </div>
 
               <div className={styles.content}>
-                <span className={styles.category}>{project.category}</span>
-                <h3 className={styles.projectTitle}>{project.title}</h3>
+                <div className={styles.cardHeader}>
+                  <span className={styles.category}>{project.category}</span>
+                  <h3 className={styles.projectTitle}>{project.title}</h3>
+                </div>
+                
+                <div className={styles.metricsStrip}>
+                  <div className={styles.metricItem}>
+                    <span className={styles.metricLabel}>Results</span>
+                    <span className={styles.metricValue}>{project.metrics.leads}</span>
+                  </div>
+                  <div className={styles.metricItem}>
+                    <span className={styles.metricLabel}>Efficiency</span>
+                    <span className={styles.metricValue}>{project.metrics.costReduction}</span>
+                  </div>
+                  <div className={styles.metricItem}>
+                    <span className={styles.metricLabel}>Before / After</span>
+                    <span className={styles.metricValue}>{project.metrics.beforeAfter}</span>
+                  </div>
+                </div>
               </div>
             </motion.div>
           ))}

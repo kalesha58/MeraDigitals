@@ -17,22 +17,23 @@ const getResend = () => {
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, phone, service, message } = body;
+        const { name, email, phone, businessType, budget, message } = body;
 
         // Validate required fields
-        if (!name || !email || !message) {
+        if (!name || (!email && !phone)) {
             return NextResponse.json(
-                { error: 'Missing required fields' },
+                { error: 'Missing required fields (Name and at least one contact method)' },
                 { status: 400 }
             );
         }
 
-        // Log the data for debugging (this proves the dynamic data capture works)
+        // Log the data for debugging
         console.log('----- Contact Form Submission -----');
         console.log('Name:', name);
         console.log('Email:', email);
         console.log('Phone:', phone);
-        console.log('Service:', service);
+        console.log('Business Type:', businessType);
+        console.log('Budget:', budget);
         console.log('Message:', message);
         console.log('-----------------------------------');
 
@@ -45,7 +46,6 @@ export async function POST(request: Request) {
                 const fileData = await fs.readFile(filePath, 'utf8');
                 submissions = JSON.parse(fileData);
             } catch (readError) {
-                // If file doesn't exist or is empty, start fresh
                 submissions = [];
             }
 
@@ -54,28 +54,21 @@ export async function POST(request: Request) {
                 name,
                 email,
                 phone,
-                service,
+                businessType,
+                budget,
                 message,
                 submittedAt: new Date().toISOString(),
-                status: 'new' // valuable for admin to track read/unread
+                status: 'new'
             };
 
-            submissions.unshift(newSubmission); // Add to top
+            submissions.unshift(newSubmission);
             await fs.writeFile(filePath, JSON.stringify(submissions, null, 2));
-            console.log('Saved submission to file');
         } catch (fsError) {
             console.error('Error saving submission to file:', fsError);
-            // Continue execution - email is more critical
         }
-
-        // ----------------------------------------------------------------------
-        // EMAIL SENDING IMPLEMENTATION (Uncomment and configure to use)
-        // ----------------------------------------------------------------------
 
         const resend = getResend();
         if (!resend) {
-            console.error('Missing RESEND_API_KEY');
-            // Don't crash in dev if key is missing, just log
             return NextResponse.json(
                 { message: 'Form submitted (Email simulation - Key missing)' },
                 { status: 200 }
@@ -84,25 +77,23 @@ export async function POST(request: Request) {
 
         try {
             const data = await resend.emails.send({
-                from: 'Contact Form <onboarding@resend.dev>', // Use verified domain in production
-                to: ['kalesha786kareem@gmail.com'], // Updated to your personal email
-                subject: `New Inquiry from ${name} - Mera Digitals`,
+                from: 'Contact Form <onboarding@resend.dev>',
+                to: ['kalesha786kareem@gmail.com'],
+                subject: `New Lead: ${name} - Mera Digitals`,
                 html: `
-              <h2>New Contact Form Submission</h2>
+              <h2>New Lead Capture Form Submission</h2>
               <p><strong>Name:</strong> ${name}</p>
-              <p><strong>Email:</strong> ${email}</p>
-              <p><strong>Phone:</strong> ${phone}</p>
-              <p><strong>Service:</strong> ${service}</p>
+              <p><strong>Email:</strong> ${email || 'Not provided'}</p>
+              <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+              <p><strong>Business Type:</strong> ${businessType || 'Not specified'}</p>
+              <p><strong>Budget:</strong> ${budget || 'Not specified'}</p>
               <p><strong>Message:</strong></p>
-              <p>${message}</p>
+              <p>${message || 'No message provided'}</p>
             `,
             });
             console.log('Email sent successfully:', data);
         } catch (emailError) {
             console.error('Error sending email:', emailError);
-            // We might still want to return 200 to the client if the data was logged/saved, 
-            // but strictly speaking, if email failed, maybe alert the user.
-            // For now, let's treat it as a server error.
             return NextResponse.json(
                 { error: 'Failed to send email' },
                 { status: 500 }
@@ -110,7 +101,7 @@ export async function POST(request: Request) {
         }
 
         return NextResponse.json(
-            { message: 'Message received successfully' },
+            { message: 'Lead received successfully' },
             { status: 200 }
         );
     } catch (error) {

@@ -126,28 +126,91 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 3rem;
+  padding: 2.5rem;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .category {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--brand-orange);
   letter-spacing: 0.1em;
-  margin-bottom: 0.75rem;
+  text-transform: uppercase;
 }
 
 .projectTitle {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   color: white;
   line-height: 1.2;
 }
 
+.metricsStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1.25rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s ease 0.1s;
+}
+
+.card:hover .metricsStrip {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.metricItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metricLabel {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metricValue {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: white;
+  white-space: nowrap;
+}
+
 .large .projectTitle {
   font-size: 2.5rem;
+}
+
+.large .metricsStrip {
+  transform: translateY(0);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+  max-width: fit-content;
+  gap: 2rem;
+  padding: 1.5rem 2rem;
+}
+
+.large .metricValue {
+  font-size: 1.1rem;
 }
 
 @media (max-width: 1280px) {

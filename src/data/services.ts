@@ -819,4 +819,94 @@ export const servicesData: Record<string, IServiceData> = {
       }
     ],
   },
+  'influencer-marketing': {
+    title: 'Influencer Marketing',
+    subtitle: 'Scale Your Brand with Trust & Authentic Reach',
+    heroImage: '/assets/generated/influencer_marketing_hero.png',
+    aboutTitle: 'About Influencer Marketing',
+    description1:
+      'In a world of noise, trust is the ultimate currency. We connect your brand with authentic voices that resonate with your target audience, turning influence into measurable impact.',
+    description2:
+      'Our data-driven approach ensures you partner with creators who don\'t just have followers, but have actual influence over buying decisions in your niche.',
+    servicesInclude: {
+      description:
+        'We manage the entire lifecycle of your influencer campaigns, from discovery to high-level ROI analysis.',
+      items: [
+        'Creator Discovery & Vetting',
+        'Campaign Strategy & Briefing',
+        'Contract Negotiation',
+        'Content Review & Approval',
+        'Performance Tracking',
+        'Long-term Partnership Management',
+        'UGC Strategy',
+        'Multi-Platform Coordination',
+      ],
+    },
+    galleryImages: [
+      'https://images.unsplash.com/photo-1557838923-2985c318be48?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=800&auto=format&fit=crop',
+    ],
+    expertise: {
+      description:
+        'We combine years of relationship building with advanced social analytics to deliver influencer campaigns that scale.',
+      items: [
+        {
+          number: '01',
+          title: 'Macro & Micro Strategy',
+          desc: 'Balancing mass awareness with high-engagement niche authority.',
+        },
+        {
+          number: '02',
+          title: 'Authenticity Audit',
+          desc: 'Using data to verify audience quality and engagement integrity.',
+        },
+        {
+          number: '03',
+          title: 'Content Pillar Design',
+          desc: 'Creating briefs that allow creators to be unique while staying on-brand.',
+        },
+        {
+          number: '04',
+          title: 'Performance Optimization',
+          desc: 'Tracking every link, code, and mention to measure actual conversion impact.',
+        },
+        {
+          number: '05',
+          title: 'UGC Amplification',
+          desc: 'Repurposing high-performing creator content for your paid social ads.',
+        },
+        {
+          number: '06',
+          title: 'End-to-End Management',
+          desc: 'Handling all logistics, communication, and reporting so you can scale efficiently.',
+        },
+      ],
+    },
+    benefits: {
+      description:
+        'Leverage the power of peer-to-peer recommendation to build unshakeable brand trust.',
+      items: [
+        'Higher Engagement Rates than Traditional Ads',
+        'Authentic Brand Storytelling and Trust',
+        'Scalable Reach Across Target Demographics',
+      ],
+    },
+    benefitsImage: '/images/branded/elephant_marketing_1774804545290.png',
+    metrics: [
+      { value: '10x', label: 'Average Engagement vs Paid Ads' },
+      { value: '1M+', label: 'Network of Vetted Creators' },
+      { value: '3.5x', label: 'Average ROAS on Influencer Spend' },
+      { value: '100%', label: 'Brand Safety & Quality Guarantee' },
+    ],
+    faq: [
+      {
+        question: 'Do you work with macro-influencers only?',
+        answer: 'We work with creators of all sizes, from micro-influencers to major celebrities. We identify who is most likely to move the needle for your brand based on your goals.'
+      },
+      {
+        question: 'How do you measure ROI?',
+        answer: 'We use custom links, codes, and lift studies to measure conversions, engagement, and brand reach.'
+      }
+    ],
+  },
 };

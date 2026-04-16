@@ -1,10 +1,24 @@
 {
   "hero": {
     "badge": "MeraDigital Marketing Agency",
-    "titlePart1": "Build Your Digital",
-    "titleGradient": "Presence",
-    "titlePart2": "To Scale.",
-    "subtitle": "We help brands grow through data-driven marketing strategies, high-performance websites, and compelling creative design that converts visitors into customers.",
+    "titles": [
+      {
+        "part1": "🚀 Grow Faster with",
+        "gradient": "Result-Driven",
+        "part2": "Digital Marketing"
+      },
+      {
+        "part1": "📈 Scale Your Brand with",
+        "gradient": "Performance-Focused",
+        "part2": "Media Buying"
+      },
+      {
+        "part1": "🤝 Drive Real Growth with",
+        "gradient": "Strategic Influencer",
+        "part2": "Campaigns"
+      }
+    ],
+    "subtitle": "We help brands scale with powerful strategies in influencer marketing, media buying, and performance campaigns that generate real leads, calls, and revenue.",
     "ctaText": "Get Started",
     "ctaLink": "/contact-us",
     "secondaryCtaText": "How it Works",
@@ -16,7 +30,7 @@
     "description": "Elevate your brand with data-driven strategies and stunning design.",
     "schema": {
       "organizationName": "Mera Digitals",
-      "contactPhone": "07799022154",
+      "contactPhone": "099599 65998",
       "address": "10-55/1 Main Road Maseed Street",
       "logoUrl": "/MER_DIGITALS_LOGO.png"
     },

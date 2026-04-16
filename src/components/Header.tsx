@@ -65,12 +65,41 @@ const serviceItems = [
   },
 ];
 
+const industryItems = [
+  {
+    title: 'Medical / Healthcare',
+    subtitle: 'Care-focused marketing',
+    icon: ShieldCheck,
+    href: '/industries/healthcare',
+  },
+  {
+    title: 'Real Estate',
+    subtitle: 'Lead gen for builders',
+    icon: Search,
+    href: '/industries/real-estate',
+  },
+  {
+    title: 'Entertainment / Movies',
+    subtitle: 'Blockbuster digital buzz',
+    icon: Award,
+    href: '/industries/entertainment',
+  },
+  {
+    title: 'E-commerce & Retail',
+    subtitle: 'Scale your online store',
+    icon: DollarSign,
+    href: '/industries/ecommerce',
+  },
+];
+
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '#', label: 'Services', hasMega: true },
-  { href: '/blogs', label: 'Blogs' },
+  { href: '#', label: 'Services', hasMega: true, items: serviceItems },
+  { href: '#', label: 'Industries', hasMega: true, items: industryItems },
   { href: '/about-us', label: 'About Us' },
-  { href: '/contact-us', label: 'Get A Quote', isCta: true },
+  { href: '/case-studies', label: 'Case Studies' },
+  { href: '/media', label: 'Media' },
+  { href: '/contact-us', label: 'Contact', isCta: true },
 ];
 
 export default function Header() {
@@ -137,8 +166,8 @@ export default function Header() {
                     <ChevronDown size={14} className={styles.chevron} />
                   </div>
                   <div className={`${styles.megaMenu} ${forceCloseMega ? styles.forceClose : ''}`}>
-                    <div className={styles.megaGrid}>
-                      {serviceItems.map((item) => {
+                    <div className={styles.megaGrid} style={{ gridTemplateColumns: link.items && link.items.length > 4 ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)', width: link.items && link.items.length > 4 ? '900px' : '600px' }}>
+                      {link.items?.map((item: any) => {
                         const Icon = item.icon;
                         return (
                           <Link key={item.title} href={item.href} className={styles.megaItem} onClick={handleMegaItemClick}>
@@ -219,7 +248,7 @@ export default function Header() {
 
                 {link.hasMega && (
                   <div className={styles.mobileSubGrid}>
-                    {serviceItems.map((item) => (
+                    {link.items?.map((item: any) => (
                       <Link
                         key={item.title}
                         href={item.href}

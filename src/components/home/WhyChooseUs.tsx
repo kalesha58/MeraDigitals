@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { Users, ClipboardList, Award, BarChart3 } from 'lucide-react';
+import { TrendingUp, UserCheck, Target, Layers, Zap } from 'lucide-react';
 import { useRef } from 'react';
 import styles from '@/styles/WhyChooseUs.module.css';
 
@@ -13,28 +13,29 @@ interface Feature {
 
 const features: Feature[] = [
   {
-    title: 'Certified Experts',
-    description:
-      'Our team consists of Google and Meta certified professionals dedicated to staying ahead of industry trends.',
-    icon: Users,
+    title: 'Proven Lead Generation Strategies',
+    description: 'Battle-tested funnels that consistently turn prospects into high-quality leads.',
+    icon: TrendingUp,
   },
   {
-    title: 'Proven Results',
-    description:
-      'We focus on measurable outcomes like ROAS, lead quality, and organic traffic growth that impacts your revenue.',
-    icon: ClipboardList,
+    title: 'Industry-Specific Marketing Experts',
+    description: 'Specialized teams for Healthcare, Real Estate, E-commerce, and 15+ other niches.',
+    icon: UserCheck,
   },
   {
-    title: 'Award Winning',
-    description:
-      'Recognized for our creative excellence and strategic thinking across multiple digital disciplines.',
-    icon: Award,
+    title: 'ROI-Focused Campaigns',
+    description: 'We optimize for conversions and bottom-line growth, not just vanity metrics.',
+    icon: Target,
   },
   {
-    title: 'Transparent Reporting',
-    description:
-      'Real-time dashboards and detailed monthly reports ensure you always know exactly how your campaigns perform.',
-    icon: BarChart3,
+    title: 'Multi-Platform Expertise',
+    description: 'Unified strategies across Meta, Google, YouTube, and OTT for maximum reach.',
+    icon: Layers,
+  },
+  {
+    title: 'Fast Execution & Optimization',
+    description: 'Rapid deployment and continuous iteration to scale your winning campaigns.',
+    icon: Zap,
   },
 ];
 

@@ -147,7 +147,7 @@ export default function AboutContent() {
               </div>
 
               <motion.p variants={itemVariants} className={styles.heroSubtitle}>
-                We are MeraDigital Marketing Agency, dedicated to transforming businesses through innovation, strategy, and data-driven design.
+                At Mera Digitals, we are a performance-driven digital marketing agency focused on delivering measurable growth.
               </motion.p>
 
               <motion.div variants={itemVariants} className={styles.heroActions}>
@@ -251,10 +251,10 @@ export default function AboutContent() {
                 The <span className="text-gradient">Mera Story.</span>
               </h2>
               <p className={styles.heroSubtitle}>
-                Founded on the principle of treating every client's business as if it were our own. "Mera" — meaning "Mine" — reflects our philosophy of deep ownership and passion.
+                We specialize in helping businesses scale through data-driven strategies, creative campaigns, and high-converting ad funnels. Our expertise spans across healthcare, real estate, entertainment, and e-commerce industries.
               </p>
               <p className={styles.heroSubtitle}>
-                What began as a boutique studio has evolved into a full-scale digital powerhouse. We are recognized experts in the healthcare field, partnering with numerous hospitals and clinics to scale their digital presence effectively across 15+ industries.
+                Founded on the principle of treating every client&apos;s business as if it were our own. &quot;Mera&quot; — meaning &quot;Mine&quot; — reflects our philosophy of deep ownership and passion.
               </p>
 
               <div className={styles.checkPills}>
