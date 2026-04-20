@@ -18,8 +18,9 @@ export default function MediaPage() {
             source: "Financial Times",
             date: "Aug 28, 2025",
             type: "Press Release",
-            image: "https://images.unsplash.com/photo-1454165833767-027ffea70251?q=80&w=800&auto=format&fit=crop"
+            image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop"
         },
+
         {
             title: "Future of Influencer Marketing: Trends for 2026",
             source: "Media Weekly",
@@ -126,17 +127,15 @@ export default function MediaPage() {
                         <h2 style={{ fontSize: '2.5rem', margin: '1rem 0 1.5rem 0' }}>The Future of AI in Advertising</h2>
                         <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem' }}>Our CEO discusses the transformative power of AI and data in modern marketing strategies on the 'Tech Growth' podcast.</p>
                         <button className="btn btn-primary" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                            <Play size={18} fill="currentColor" /> Watch Interview
+                            Read Full Interview
                         </button>
+
                     </div>
-                    <div style={{ position: 'relative', height: '350px', borderRadius: '24px', overflow: 'hidden' }}>
-                        <img src="https://images.unsplash.com/photo-1478737270239-2fccd2c78621?q=80&w=800&auto=format&fit=crop" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                            <div style={{ width: '80px', height: '80px', borderRadius: '50%', background: 'var(--brand-orange)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-                                <Play size={32} fill="currentColor" />
-                            </div>
-                        </div>
+                    <div style={{ height: '350px', borderRadius: '24px', overflow: 'hidden' }}>
+                        <img src="https://images.unsplash.com/photo-1593642532400-2682810df593?q=80&w=800&auto=format&fit=crop" alt="AI Interview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
+
+
                 </motion.div>
             </div>
         </main>

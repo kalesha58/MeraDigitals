@@ -33,9 +33,10 @@
   border-radius: 100px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--brand-coffee);
+  color: var(--text-primary);
   width: fit-content;
 }
+
 
 .badgeIcon {
   position: relative;
@@ -68,10 +69,11 @@
 .heading {
   font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 800;
-  color: var(--brand-coffee);
+  color: var(--text-primary);
   line-height: 1.2;
   margin: 0;
 }
+
 
 .headerRight {
   display: flex;
@@ -93,13 +95,18 @@
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
-  background: var(--brand-coffee);
+  background: var(--brand-orange);
   color: #fff;
   border-radius: 100px;
   font-weight: 600;
   font-size: 0.9rem;
   transition: all 0.3s ease;
 }
+
+[data-theme='light'] .allBtn {
+  background: var(--brand-coffee);
+}
+
 
 .allBtn:hover {
   background: var(--brand-orange);
@@ -119,7 +126,7 @@
 
 /* ── Left — Rating Summary Card ─────────────────────────── */
 .ratingCard {
-  background: var(--brand-coffee);
+  background: var(--brand-orange);
   border-radius: 20px;
   padding: 2.75rem 2rem;
   display: flex;
@@ -130,6 +137,11 @@
   position: relative;
   overflow: hidden;
 }
+
+[data-theme='light'] .ratingCard {
+  background: var(--brand-coffee);
+}
+
 
 .ratingCard::before {
   content: '';
@@ -261,8 +273,9 @@
 
 .navBtnPrev {
   background: var(--brand-orange);
-  color: var(--brand-coffee);
+  color: #fff;
 }
+
 
 .navBtnPrev:hover {
   background: var(--brand-coffee);
