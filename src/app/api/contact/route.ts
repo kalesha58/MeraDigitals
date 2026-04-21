@@ -107,9 +107,11 @@ export async function POST(request: Request) {
                 timeZone: 'Asia/Kolkata',
             });
 
+            const leadRecipient = process.env.CONTACT_LEAD_EMAIL || 'meradigitals@gmail.com';
+
             await transporter.sendMail({
                 from: `"Mera Digitals Contact Form" <${process.env.SMTP_USER}>`,
-                to: 'kaleshabox8@gmail.com',
+                to: leadRecipient,
                 replyTo: email || process.env.SMTP_USER,
                 subject: `New Lead: ${name} - Mera Digitals`,
                 text: `
