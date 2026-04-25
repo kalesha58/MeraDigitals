@@ -119,10 +119,11 @@ export default function Header() {
     }, 500);
   };
 
-  // Determine if the current page should have a transparent header (e.g., Blog Details, Services)
+  // Determine if the current page should have a transparent header (e.g., Blog Details, Services, Industries)
   const isTransparentPage =
     (pathname?.startsWith('/blogs/') && pathname !== '/blogs') ||
-    (pathname?.startsWith('/services/') && pathname !== '/services');
+    (pathname?.startsWith('/services/') && pathname !== '/services') ||
+    (pathname?.startsWith('/industries/') && pathname !== '/industries');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -139,6 +140,15 @@ export default function Header() {
       document.body.style.overflow = '';
     }
   }, [mobileOpen]);
+
+  const isLinkActive = (link: any) => {
+    if (link.isCta) return false;
+    if (link.href !== '#' && pathname === link.href) return true;
+    if (link.hasMega && link.items) {
+      return link.items.some((item: any) => pathname === item.href);
+    }
+    return false;
+  };
 
   if (pathname?.startsWith('/admin')) return null;
 
@@ -157,43 +167,57 @@ export default function Header() {
 
         {/* Desktop Nav */}
         <nav className={styles.navLinks}>
-          {navLinks.map((link) => (
-            <div key={link.label} className={styles.navItem}>
-              {link.hasMega ? (
-                <>
-                  <div className={styles.flexCenter}>
-                    <span className={styles.navLinkItem}>{link.label}</span>
-                    <ChevronDown size={14} className={styles.chevron} />
-                  </div>
-                  <div className={`${styles.megaMenu} ${forceCloseMega ? styles.forceClose : ''}`}>
-                    <div className={styles.megaGrid} style={{ gridTemplateColumns: link.items && link.items.length > 4 ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)', width: link.items && link.items.length > 4 ? '900px' : '600px' }}>
-                      {link.items?.map((item: any) => {
-                        const Icon = item.icon;
-                        return (
-                          <Link key={item.title} href={item.href} className={styles.megaItem} onClick={handleMegaItemClick}>
-                            <div className={styles.megaIconWrapper}>
-                              <Icon size={20} />
-                            </div>
-                            <div className={styles.megaContent}>
-                              <h4>{item.title}</h4>
-                              <span>{item.subtitle}</span>
-                            </div>
-                          </Link>
-                        );
-                      })}
+          {navLinks.map((link) => {
+            const active = isLinkActive(link);
+            return (
+              <div key={link.label} className={`${styles.navItem} ${active ? styles.active : ''}`}>
+                {link.hasMega ? (
+                  <>
+                    <div className={styles.flexCenter}>
+                      <span className={styles.navLinkItem}>{link.label}</span>
+                      <ChevronDown size={14} className={styles.chevron} />
                     </div>
-                  </div>
-                </>
-              ) : (
-                <Link
-                  href={link.href}
-                  className={`${link.isCta ? styles.ctaButton : styles.navLinkItem} ${pathname === link.href ? styles.active : ''}`}
-                >
-                  {link.label}
-                </Link>
-              )}
-            </div>
-          ))}
+                    <div
+                      className={`${styles.megaMenu} ${forceCloseMega ? styles.forceClose : ''}`}
+                      style={{
+                        width: `min(calc(${(link.items && link.items.length > 4 ? 1100 : 600)}px + 3rem), calc(100vw - 2rem))`,
+                      }}
+                    >
+                      <div
+                        className={styles.megaGrid}
+                        style={{
+                          gridTemplateColumns:
+                            link.items && link.items.length > 4 ? 'repeat(3, 1fr)' : 'repeat(2, 1fr)',
+                        }}
+                      >
+                        {link.items?.map((item: any) => {
+                          const Icon = item.icon;
+                          return (
+                            <Link key={item.title} href={item.href} className={styles.megaItem} onClick={handleMegaItemClick}>
+                              <div className={styles.megaIconWrapper}>
+                                <Icon size={20} />
+                              </div>
+                              <div className={styles.megaContent}>
+                                <h4>{item.title}</h4>
+                                <span>{item.subtitle}</span>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <Link
+                    href={link.href}
+                    className={link.isCta ? styles.ctaButton : styles.navLinkItem}
+                  >
+                    {link.label}
+                  </Link>
+                )}
+              </div>
+            );
+          })}
           {/* Theme Toggle Desktop */}
           <button
             onClick={toggleTheme}

@@ -121,8 +121,10 @@
 }
 
 .callBtn:hover {
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    background: var(--brand-orange);
+    border-color: var(--brand-orange);
+    color: #ffffff;
+    box-shadow: 0 10px 30px var(--brand-orange-glow);
 }
 
 .whatsappBtn {

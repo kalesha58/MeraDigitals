@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWhatsApp from "@/components/common/FloatingWhatsApp";
+import ScrollToTop from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -47,7 +48,8 @@ export default function RootLayout({
           </div>
 
           <Header />
-          <main style={{ minHeight: '100vh', padding: '0 0', position: 'relative', overflow: 'hidden' }}>
+          <ScrollToTop />
+          <main style={{ minHeight: '100vh', padding: '0 0', position: 'relative' }}>
             {children}
           </main>
           <Footer />

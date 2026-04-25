@@ -116,12 +116,8 @@
   transition: width 0.3s ease;
 }
 
-.navLinkItem.active {
-  color: inherit !important;
-  border-bottom: 2px solid var(--accent-primary);
-}
-
-.navItem:hover::after {
+.navItem:hover::after,
+.navItem.active::after {
   width: 100%;
 }
 
@@ -130,7 +126,7 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(10px);
-  width: 900px;
+  max-width: calc(100vw - 2rem);
   background: white;
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 20px;
@@ -156,6 +152,7 @@
 
 .megaGrid {
   display: grid;
+  width: 100%;
   grid-template-columns: repeat(3, 1fr);
   gap: 0.5rem;
 }

@@ -56,7 +56,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.infoText}>
                   <h4>Visit Us</h4>
-                  <p>123 Innovation Drive, Tech City, CA</p>
+                  <p>1st floor, Laxmi Devi Apartments, D12, opp. Telanga Co Op Bank, near Vellanki Foods, Vamika Arcade, Madhura Nagar, Hyderabad, Telangana 500038</p>
                 </div>
               </div>
 
@@ -66,7 +66,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.infoText}>
                   <h4>Email Us</h4>
-                  <p>hello@agency.com</p>
+                  <p>meradigitals@gmail.com</p>
                 </div>
               </div>
 
@@ -76,7 +76,7 @@ export default function ContactPage() {
                 </div>
                 <div className={styles.infoText}>
                   <h4>Call Us</h4>
-                  <p>+1 (555) 123-4567</p>
+                  <p>+91 99599 65998</p>
                 </div>
               </div>
             </div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
 
           <div className={styles.mapContainer}>
              <iframe 
-               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d100939.98555098464!2d-122.50764017946261!3d37.757814996609724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80859a6d00690021%3A0x4a501367f076adff!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1645564756836!5m2!1sen!2sus" 
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.6025219597374!2d78.4357773!3d17.4289417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb974759089999%3A0x6b4b4b4b4b4b4b4b!2sLaxmi%20Devi%20Apartments%2C%20Madhura%20Nagar%2C%20Hyderabad%2C%20Telangana!5e0!3m2!1sen!2sin!4v1714041234567" 
                width="100%" 
                height="100%" 
                style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg)' }} 
